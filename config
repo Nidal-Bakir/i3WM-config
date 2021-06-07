@@ -69,7 +69,7 @@ bindsym $mod+d exec --no-startup-id ~/.config/i3/bin/rofi_app_launcher
 
 
 # start dmenu for manage my extra monitor (disconnect, extra, duplicate)
-bindsym $mod+m exec --no-startup-id ~/scripts/screens/multimonitor && restart 
+bindsym $mod+m exec --no-startup-id ~/scripts/multimonitor/multimonitor && restart 
 
 
 # change focus
