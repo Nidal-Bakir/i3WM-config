@@ -3,11 +3,13 @@
 option=`echo -e "suspend\nlock screen\nlogout\nreboot\npoweroff\nkill $USER" | rofi -width 600 -dmenu -p system:`
 case $option in
     suspend)
-	   
-          /usr/bin/systemctl suspend
-        ;;
+	          
+         /usr/bin/systemctl suspend
+       
+         i3lock -ef -c 000000 
+         ;;
     'lock screen')
-        i3lock-fancy
+         i3lock -ef -c 000000 
         ;;
     logout)
         i3-msg exit
