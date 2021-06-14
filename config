@@ -79,8 +79,10 @@ bindsym $mod+m exec --no-startup-id ~/scripts/multimonitor/multimonitor && resta
 # bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-
+    # cycle-focus ***
 bindsym $mod+Tab focus left
+# bindsym $mod+Tab exec --no-startup-id i3-cycle-focus.py --switch
+
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -244,6 +246,7 @@ exec --no-startup-id clipit &;
 exec_always feh --bg-s /home/nidal/Pictures/act.jpg
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id xfce4-power-manager
+# exec_always --no-startup-id i3-cycle-focus.py --history 4 
 
 # Bind App to workspace
 # Check class by using xprop command
