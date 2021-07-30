@@ -52,6 +52,7 @@ bindsym $mod+x exec $terminator
 bindsym $mod+p exec ~/.config/i3/bin/logout
 bindsym $mod+l exec i3lock -ef -c 000000
 bindsym $mod+b exec google-chrome
+#bindsym $mod+b exec firefox
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+f exec ~/.config/i3/bin/rofifinder
 bindsym $mod+e exec nautilus
@@ -237,13 +238,12 @@ set $m1 #808080
 set $m2 #FFF0E0
 
 # Startup programs
-exec_always "setxkbmap -layout us,ar"
-exec "setxkbmap -option 'grp:alt_shift_toggle'"
+exec "setxkbmap -layout us,ar"
+exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
 exec xcompmgr -c -n 
 exec --no-startup-id dunst 
-exec_always compton &;
-exec --no-startup-id clipit &; 
-exec_always feh --bg-s /home/nidal/Pictures/act.jpg
+exec --no-startup-id clipit ; 
+exec_always feh --bg-s /home/nidal/Pictures/a.jpeg
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id xfce4-power-manager
 # exec_always --no-startup-id i3-cycle-focus.py --history 4 

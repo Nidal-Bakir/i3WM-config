@@ -3,13 +3,13 @@
 # One of the following: xrandr, xbacklight, kernel
 METHOD="xbacklight"
 
-# Left click
-if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
-  xbacklight -inc 5
-# Right click
-elif [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
-  xbacklight -dec 5
-fi
+case $BLOCK_BUTTON in
+  1) xbacklight -inc 5 ;; # left click
+  3) xbacklight -dec 5 ;; # right click
+  4) xbacklight -inc 1 ;; # scroll up, increase the light
+  5) xbacklight -dec 1 ;; # scroll down, decrease the light
+
+esac
 
 URGENT_VALUE=10
 
