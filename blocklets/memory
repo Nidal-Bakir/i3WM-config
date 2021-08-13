@@ -20,14 +20,8 @@ awk -v type=$TYPE '
 /^MemTotal:/ {
 	mem_total=$2
 }
-/^MemFree:/ {
+/^MemAvailable:/ {
 	mem_free=$2
-}
-/^Buffers:/ {
-	mem_free+=$2
-}
-/^Cached:/ {
-	mem_free+=$2
 }
 /^SwapTotal:/ {
 	swap_total=$2
@@ -51,7 +45,7 @@ END {
 	printf("%.1fG/%.1fG (%.f%%)\n", used, total, pct)
 
 	# short text
-	printf("%.f%%\n", pct)
+	#printf("%.f%%\n", pct)
 
 	# color
 	if (pct > 90) {
