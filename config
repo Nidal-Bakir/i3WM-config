@@ -74,7 +74,8 @@ bindsym $mod+d exec --no-startup-id ~/.config/i3/bin/rofi_app_launcher
 
 # start dmenu for manage my extra monitor (disconnect, extra, duplicate)
 bindsym $mod+m exec --no-startup-id ~/scripts/multimonitor/multimonitor && restart 
-
+# start dmenu to change tlp profile mode (power, balance, performance)
+bindsym $mod+Shift+p exec --no-startup-id ~/scripts/tlp_profiles/change_tlp_profile && restart 
 
 # change focus
 # bindsym $mod+j focus left
@@ -115,10 +116,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+t layout tabbed
-#bindsym $mod+e layout toggle split
+bindsym $mod+w layout tabbed
+bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -241,6 +240,7 @@ set $m1 #808080
 set $m2 #FFF0E0
 
 # Startup programs
+exec --no-startup-id $terminator
 exec "setxkbmap -layout us,ar"
 exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
 exec xcompmgr -c -n 
