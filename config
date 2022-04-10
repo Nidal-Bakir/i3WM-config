@@ -4,7 +4,7 @@ default_border none
 default_floating_border none
 hide_edge_borders both
 for_window [class="Terminator"] border pixel 5
-#for_window [class="Terminator"] floating enable
+
 
 set_from_resource $darkred     color1  #000000
 set_from_resource $red         color9  #000000
@@ -50,7 +50,7 @@ bindsym $mod+x exec $terminator
 
 # Custom bindsyms
 bindsym $mod+p exec ~/.config/i3/bin/logout
-bindsym $mod+l exec i3lock -ef -c 000000
+bindsym $mod+l exec ~/scripts/i3lock_script
 
 #bindsym $mod+b exec google-chrome
 #bindsym $mod+b exec firefox
@@ -171,7 +171,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -239,14 +239,18 @@ bar {
 set $m1 #808080 
 set $m2 #FFF0E0
 
+for_window [title=".*Emulator.*"] floating enable
+for_window [class="Gnome-calculator"] floating enable
+
 # Startup programs
 exec --no-startup-id $terminator
+exec_always wal -R
 exec "setxkbmap -layout us,ar"
 exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
 exec xcompmgr -c -n 
 exec --no-startup-id dunst 
 exec --no-startup-id clipit ; 
-exec_always feh --bg-s /home/nidal/Pictures/a.jpeg
+#exec_always feh --bg-s /home/nidal/Pictures/a.jpeg
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id xfce4-power-manager
 # exec_always --no-startup-id i3-cycle-focus.py --history 4 
@@ -300,7 +304,7 @@ bindsym $mod+Shift+q      mode $power_mode
 mode $power_mode {
     bindsym p         exec systemctl poweroff
     bindsym r         exec systemctl reboot 
-    bindsym l         exec i3lock -ef -c 000000, mode "default"
+    bindsym l         exec ~/scripts/i3lock_script
     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
     # bindsym h         exec  systemctl hibernate 
     bindsym s         exec  systemctl suspend
