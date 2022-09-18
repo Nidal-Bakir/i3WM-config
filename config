@@ -1,5 +1,3 @@
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
 default_border none
 default_floating_border none
 hide_edge_borders both
@@ -50,16 +48,21 @@ bindsym $mod+x exec $terminator
 
 # Custom bindsyms
 bindsym $mod+p exec ~/.config/i3/bin/logout
-bindsym $mod+l exec ~/scripts/i3lock_script
+bindsym $mod+l exec ~/scripts/lock_script
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 #bindsym $mod+b exec google-chrome
 #bindsym $mod+b exec firefox
 bindsym $mod+b exec brave
+bindsym $mod+Shift+c exec code
+
 
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+f exec ~/.config/i3/bin/rofifinder
 bindsym $mod+e exec nautilus
 bindsym $mod+t exec telegram-desktop
+bindsym $mod+Shift+i exec ~/.config/i3/bin/rofi_emoji_popup.sh
 
 # Enable Print Screen
 #bindsym --release $mod+Print exec gnome-screenshot -i
@@ -167,7 +170,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 # restart i3 inplace
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -201,13 +204,18 @@ mode "resize" {
 # run pactl list sinks
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume#
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+
 
 # Amixer
+bindsym --release XF86AudioRaiseVolume exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release XF86AudioLowerVolume exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release XF86AudioMute exec pkill -SIGRTMIN+10 i3blocks
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume#
-#bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- #decrease sound volume#
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse set Master 1+ toggle # mute sound
+
 
 # Sreen brightness controls
 # enable passwordless sudo for ybacklight. echo "koromicha ALL=NOPASSWD: /usr/bin/ybacklight" > /etc/sudoers.d/ybacklight
@@ -240,6 +248,7 @@ set $m1 #808080
 set $m2 #FFF0E0
 
 for_window [title=".*Emulator.*"] floating enable
+
 for_window [class="Gnome-calculator"] floating enable
 
 # Startup programs
@@ -304,7 +313,7 @@ bindsym $mod+Shift+q      mode $power_mode
 mode $power_mode {
     bindsym p         exec systemctl poweroff
     bindsym r         exec systemctl reboot 
-    bindsym l         exec ~/scripts/i3lock_script
+    bindsym l         exec ~/scripts/lock_script
     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
     # bindsym h         exec  systemctl hibernate 
     bindsym s         exec  systemctl suspend
