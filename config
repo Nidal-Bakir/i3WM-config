@@ -215,7 +215,9 @@ bindsym --release XF86AudioMute exec pkill -SIGRTMIN+10 i3blocks
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- #decrease sound volume#
 bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse set Master 1+ toggle # mute sound
-
+bindsym $mod+XF86AudioPlay exec "/home/nidal/scripts/send_XF86Audio_keystroke_to_brave.sh pp"
+bindsym $mod+XF86AudioPrev exec "/home/nidal/scripts/send_XF86Audio_keystroke_to_brave.sh p"
+bindsym $mod+XF86AudioNext exec "/home/nidal/scripts/send_XF86Audio_keystroke_to_brave.sh n"
 
 # Sreen brightness controls
 # enable passwordless sudo for ybacklight. echo "koromicha ALL=NOPASSWD: /usr/bin/ybacklight" > /etc/sudoers.d/ybacklight
@@ -231,7 +233,7 @@ bar {
 
     colors {
         separator #081419
-        background #253941
+        background  #45121B  #253941 
         #statusline #839496
         focused_workspace #fdf6e3 #6c71c4 #fdf6e3
         active_workspace #fdf6e3 #6c71c4 #fdf6e3
