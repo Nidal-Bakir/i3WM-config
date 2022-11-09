@@ -227,7 +227,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 
 # i3blocks
 bar {
-    status_command i3blocks
+    status_command SCRIPT_DIR=~/.config/i3/blocklets i3blocks
     position top
     font pango:Hack, FontAwesome 11
 
